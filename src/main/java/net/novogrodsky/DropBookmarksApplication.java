@@ -24,9 +24,7 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
     @Override
     public void run(final DropBookmarksConfiguration configuration,
                     final Environment environment) {
-        environment.jersey().register(
-                new HelloResource();
-        );
+        environment.jersey().register(new HelloResource());
     }
 
 }
