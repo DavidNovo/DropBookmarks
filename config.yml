@@ -2,3 +2,6 @@ logging:
   level: INFO
   loggers:
     net.novogrodsky: DEBUG
+template: Hello, %s!
+defaultNamr: Stranger
+
