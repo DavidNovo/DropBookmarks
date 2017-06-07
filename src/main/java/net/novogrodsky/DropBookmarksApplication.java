@@ -3,7 +3,9 @@ package net.novogrodsky;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import net.novogrodsky.api.Saying;
 import net.novogrodsky.resources.HelloResource;
+import net.novogrodsky.resources.SayingResource;
 
 /**
  * The Application subclass forms the core of the application.  This class
@@ -45,6 +47,16 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
     public void run(final DropBookmarksConfiguration configuration,
                     final Environment environment) {
         environment.jersey().register(new HelloResource());
+
+        //creating second resource to the environment
+        final SayingResource sayingResource = new SayingResource(
+                configuration.getTemplate(),
+                configuration.getDefaultName()
+        );
+
+        // adding second resource to environment
+        environment.jersey().register(sayingResource);
+
     }
 
 }

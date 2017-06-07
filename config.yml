@@ -3,5 +3,14 @@ logging:
   loggers:
     net.novogrodsky: DEBUG
 template: Hello, %s!
-defaultNamr: Stranger
+defaultName: Stranger
+# this section is for the metrics package
+# this sends metrics info to the console
+metrics:
+  reporters:
+    - type: console
+      output: STDOUT
+      frequency: 1m
+
+
 

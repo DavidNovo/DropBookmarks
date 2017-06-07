@@ -1,5 +1,7 @@
 package net.novogrodsky.resources;
 
+import com.codahale.metrics.annotation.ExceptionMetered;
+import com.codahale.metrics.annotation.Metered;
 import com.codahale.metrics.annotation.Timed;
 import net.novogrodsky.api.Saying;
 
@@ -12,7 +14,8 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * A Resource class is the heart of a dropwizardapplication.
+ * A Resource class is the heart of a dropwizard application.
+ * This uses a class level @Path annotation.
  * Created by david on 6/7/2017.
  */
 @Path("/hello-saying")
@@ -29,6 +32,14 @@ public class SayingResource {
         this.defaultName = defaultName;
     }
 
+    /**
+     * This method is mapped to the @GET HTTP verb.  see the annotation
+     * QueryParam; it is used to map the query parameter to the variable name.
+     * also note that if there is no name, the default from the template is used.
+     *
+     * @param name
+     * @return
+     */
     @GET
     @Timed
     public Saying sayHello(@QueryParam("name") Optional<String> name){
