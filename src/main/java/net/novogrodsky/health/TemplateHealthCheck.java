@@ -9,7 +9,7 @@ public class TemplateHealthCheck extends HealthCheck{
     private final String template;
 
     public TemplateHealthCheck(String template) {
-        this.template = null;
+        this.template = template;
     }
 
     @Override
