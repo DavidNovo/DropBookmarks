@@ -4,6 +4,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import net.novogrodsky.api.Saying;
+import net.novogrodsky.health.TemplateHealthCheck;
 import net.novogrodsky.resources.HelloResource;
 import net.novogrodsky.resources.SayingResource;
 
@@ -46,6 +47,13 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
     @Override
     public void run(final DropBookmarksConfiguration configuration,
                     final Environment environment) {
+
+        // adding the health check to the environment
+        final TemplateHealthCheck healthCheck =
+                new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template",healthCheck);
+
+        // adding first resource to the environment
         environment.jersey().register(new HelloResource());
 
         //creating second resource to the environment
