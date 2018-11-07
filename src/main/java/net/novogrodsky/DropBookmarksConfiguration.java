@@ -12,28 +12,28 @@ import org.hibernate.validator.constraints.NotEmpty;
  * class and validated.
  */
 public class DropBookmarksConfiguration extends Configuration {
-    // TODO: implement service configuration
+  // TODO: implement service configuration
 
-    // these are pulled from the deseralized YAML file
-    @NotEmpty
-    private String template;
+  // these are pulled from the deseralized YAML file
+  @NotEmpty
+  private String template;
 
-    @NotEmpty
-    private String defaultName = "Stranger";
+  @NotEmpty
+  private String defaultName = "Stranger";
 
-    // these are getters and setters associated with the above variables
-    @JsonProperty
-    public String getTemplate() {
-        return template;
-    }
+  // these are getters and setters associated with the above variables
+  @JsonProperty
+  public String getTemplate() {
+    return template;
+  }
 
-    @JsonProperty
-    public String getDefaultName() {
-        return defaultName;
-    }
+  @JsonProperty
+  public String getDefaultName() {
+    return defaultName;
+  }
 
-    @JsonProperty
-    public void setDefaultName(String name) {
-        this.defaultName = name;
-    }
+  @JsonProperty
+  public void setDefaultName(String name) {
+    this.defaultName = name;
+  }
 }

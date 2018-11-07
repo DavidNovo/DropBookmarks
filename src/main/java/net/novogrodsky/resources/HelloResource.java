@@ -10,22 +10,22 @@ import javax.ws.rs.core.MediaType;
 /**
  * Each resource class is associated with a URI.
  *
- * This resource returns information defined in this class.
+ * <p>This resource returns information defined in this class.
  * Created by dnovogrodsky on 11/14/16.
  */
 @Path("/Hello")
 public class HelloResource {
 
-    /**
-     * This method returns a string.
-     * It is annotated with @Timed so metrics will be created.
-     *
-     * @return
-     */
-    @GET
-    @Timed
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getGreeting () {
-        return "Hello World";
-    }
+  /**
+   * This method returns a string.
+   * It is annotated with @Timed so metrics will be created.
+   *
+   * @return
+   */
+  @GET
+  @Timed
+  @Produces(MediaType.TEXT_PLAIN)
+  public String getGreeting() {
+    return "Hello World";
+  }
 }

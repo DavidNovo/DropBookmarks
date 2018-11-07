@@ -19,29 +19,29 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/hello-saying")
 @Produces(MediaType.APPLICATION_JSON)
 public class SayingResource {
-    private final String template;
-    private final String defaultName;
-    private final AtomicLong counter;
+  private final String template;
+  private final String defaultName;
+  private final AtomicLong counter;
 
 
-    public SayingResource(String template, String defaultName) {
-        this.counter = new AtomicLong();
-        this.template = template;
-        this.defaultName = defaultName;
-    }
+  public SayingResource(String template, String defaultName) {
+    this.counter = new AtomicLong();
+    this.template = template;
+    this.defaultName = defaultName;
+  }
 
-    /**
-     * This method is mapped to the @GET HTTP verb.  see the annotation
-     * QueryParam; it is used to map the query parameter to the variable name.
-     * also note that if there is no name, the default from the template is used.
-     *
-     * @param name
-     * @return
-     */
-    @GET
-    @Timed
-    public Saying sayHello(@QueryParam("name") Optional<String> name){
-        final String value = String.format(template, name.orElse(defaultName));
-        return new Saying(counter.incrementAndGet(), value);
-    }
+  /**
+   * This method is mapped to the @GET HTTP verb.  see the annotation
+   * QueryParam; it is used to map the query parameter to the variable name.
+   * also note that if there is no name, the default from the template is used.
+   *
+   * @param name
+   * @return
+   */
+  @GET
+  @Timed
+  public Saying sayHello(@QueryParam("name") Optional<String> name) {
+    final String value = String.format(template, name.orElse(defaultName));
+    return new Saying(counter.incrementAndGet(), value);
+  }
 }
